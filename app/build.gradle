@@ -1,0 +1,40 @@
+plugins {
+   id 'application'
+	id 'java'
+	id 'org.springframework.boot' version '3.1.5'
+	id 'io.spring.dependency-management' version '1.1.3'
+}
+
+
+group = 'quiz'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '21'
+}
+
+
+repositories {
+   mavenCentral()
+}
+
+dependencies {
+
+	def mysql_connector_version = "5.1.49"
+
+	implementation "mysql:mysql-connector-java:$mysql_connector_version"
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+application {
+   mainClass = 'quiz.SpringBootApp'
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
